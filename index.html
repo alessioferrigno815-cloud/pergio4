@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Per Giorgia 💛</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: radial-gradient(circle, #0b1c2d, #020617);
+        font-family: 'Poppins', sans-serif;
+        color: white;
+    }
+
+    button {
+        padding: 18px 40px;
+        font-size: 26px;
+        border: none;
+        border-radius: 40px;
+        cursor: pointer;
+        background: linear-gradient(45deg, gold, orange);
+        color: #2b1a00;
+        font-family: 'Great Vibes', cursive;
+        box-shadow: 0 0 20px gold;
+        transition: transform 0.2s, box-shadow 0.2s;
+        z-index: 10;
+    }
+
+    button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 35px gold;
+    }
+
+    #message {
+        position: absolute;
+        font-size: 70px;
+        text-align: center;
+        display: none;
+        z-index: 5;
+        font-family: 'Great Vibes', cursive;
+        color: gold;
+        text-shadow:
+            0 0 10px orange,
+            0 0 30px gold,
+            0 0 60px orange;
+        animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+        from { opacity: 0.8; }
+        to { opacity: 1; }
+    }
+
+    .emoji {
+        position: absolute;
+        font-size: 42px;
+        animation: fall linear infinite;
+        pointer-events: none;
+    }
+
+    @keyframes fall {
+        from {
+            transform: translateY(-10vh) rotate(0deg);
+            opacity: 1;
+        }
+        to {
+            transform: translateY(110vh) rotate(720deg);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<button onclick="start()">Per Giorgia 💛</button>
+
+<div id="message">Ti voglio tanto bene Giorgia</div>
+
+<script>
+function start() {
+    document.querySelector("button").style.display = "none";
+    document.getElementById("message").style.display = "block";
+
+    // tantissimi elementi
+    setInterval(createEmoji, 120);
+}
+
+function createEmoji() {
+    const emoji = document.createElement("div");
+    emoji.classList.add("emoji");
+
+    // più girasoli che fuochi
+    emoji.textContent = Math.random() > 0.3 ? "🌻" : "🎆";
+
+    emoji.style.left = Math.random() * 100 + "vw";
+    emoji.style.animationDuration = (2 + Math.random() * 3) + "s";
+
+    document.body.appendChild(emoji);
+
+    setTimeout(() => {
+        emoji.remove();
+    }, 6000);
+}
+</script>
+
+</body>
+</html>
